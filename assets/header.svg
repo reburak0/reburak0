@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="50%" stop-color="#161b2e"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7f5af0">
+        <animate attributeName="stop-color" values="#7f5af0;#2cb67d;#00d4ff;#7f5af0" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#00d4ff">
+        <animate attributeName="stop-color" values="#00d4ff;#7f5af0;#2cb67d;#00d4ff" dur="8s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <radialGradient id="orb1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#7f5af0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7f5af0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <clipPath id="round"><rect width="1200" height="320" rx="24"/></clipPath>
+  </defs>
+
+  <style>
+    .orb { animation: drift 14s ease-in-out infinite alternate; }
+    .orb.b { animation-duration: 18s; animation-direction: alternate-reverse; }
+    @keyframes drift { from { transform: translate(0,0); } to { transform: translate(120px,40px); } }
+
+    .title { font: 800 64px 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif; letter-spacing: -1px; }
+    .sub   { font: 500 22px 'JetBrains Mono', 'Fira Code', Consolas, monospace; fill: #94a1b2; }
+    .sym   { font: 700 26px 'JetBrains Mono', Consolas, monospace; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); opacity: .25; } 50% { transform: translateY(-14px); opacity: .7; } }
+
+    .fade { opacity: 0; animation: fadeUp 1.2s ease-out forwards; }
+    .d1 { animation-delay: .2s; } .d2 { animation-delay: .7s; } .d3 { animation-delay: 1.2s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .cursor { animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .line { stroke-dasharray: 520; stroke-dashoffset: 520; animation: draw 2.4s ease-out 1s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+  </style>
+
+  <g clip-path="url(#round)">
+    <rect width="1200" height="320" fill="url(#bg)"/>
+    <rect width="1200" height="320" fill="url(#grid)"/>
+    <circle class="orb" cx="180" cy="80" r="220" fill="url(#orb1)"/>
+    <circle class="orb b" cx="1020" cy="260" r="240" fill="url(#orb2)"/>
+
+    <!-- floating code symbols -->
+    <text class="sym" x="90"   y="250" fill="#7f5af0" style="animation-delay:0s">&lt;/&gt;</text>
+    <text class="sym" x="1060" y="80"  fill="#2cb67d" style="animation-delay:1.5s">{ }</text>
+    <text class="sym" x="980"  y="230" fill="#00d4ff" style="animation-delay:3s">=&gt;</text>
+    <text class="sym" x="160"  y="110" fill="#00d4ff" style="animation-delay:2.2s">$_</text>
+    <text class="sym" x="1110" y="190" fill="#7f5af0" style="animation-delay:4s">#</text>
+    <text class="sym" x="60"   y="170" fill="#2cb67d" style="animation-delay:5s">()</text>
+
+    <!-- content -->
+    <text class="sub fade d1" x="600" y="108" text-anchor="middle">~/reburak0 $ whoami<tspan class="cursor" fill="#2cb67d"> ▌</tspan></text>
+    <text class="title fade d2" x="600" y="185" text-anchor="middle" fill="url(#txt)">Burak — Full Stack Developer</text>
+    <line class="line" x1="340" y1="212" x2="860" y2="212" stroke="url(#txt)" stroke-width="3" stroke-linecap="round"/>
+    <text class="sub fade d3" x="600" y="254" text-anchor="middle">Frontend · Backend · Mobile · APIs</text>
+  </g>
+  <rect x="0.5" y="0.5" width="1199" height="319" rx="24" stroke="#ffffff" stroke-opacity="0.08"/>
+</svg>
